@@ -6,9 +6,11 @@ The realtime patch is an old one from kernel.org archives that happened to be co
 
 This kernel also enables support for SD cards, Fat32, and swap
 
-To use an SD card you'll either need an SD card adapter cartridge, I've designed on that works but its not pre-assembled and can be pricy to put together, the most expensive part is the board shipping.
+To use an SD card you'll need an SD card adapter cartridge, I've designed on that works but its not pre-assembled and can be pricy to put together, the most expensive part is the board shipping.
 
 I don't see a dingle dime of the money, the board files are free, services like jlcpcb and pcbway are just expensive (especially if you go with full assembly)
+
+Board files for my SD cart are here https://github.com/DCFUKSURMOM/LeapSD
 
 If you are ballsy like me you can sacrifice the cartridge slot and hardwire an SD to Micro-SD adapter in like I did for the initial testing, however I plan on attempting to do a combo Wifi/SD cart in the future so I wouldnt recommend it
 
