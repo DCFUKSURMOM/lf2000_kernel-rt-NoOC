@@ -1,0 +1,23 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell Memory Allocator
+
+config GRP_NEXELL_VMEM
+	bool "Memory allocator for graphic devices"
+	depends on ARCH_NEXELL
+
+config GRP_NEXELL_VMEM_ALLOC_DMA_MAX
+	int "Max allocate size from dma zone"
+	depends on GRP_NEXELL_VMEM
+		default 0
+
+config GRP_NEXELL_VMEM_KILLER
+	bool "Video Memory Killer"
+	depends on GRP_NEXELL_VMEM
+		default n
+
+config GRP_NEXELL_VMEM_KILL_LIST_OGL
+	bool "Get kill task list from OGL"
+	depends on GRP_NEXELL_VMEM && GRP_NEXELL_VMEM_KILLER
+		default n

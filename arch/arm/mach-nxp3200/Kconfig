@@ -1,0 +1,119 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell CPU
+
+config ARCH_NEXELL
+	bool
+	default y
+
+config PLAT_NXP3200
+	bool
+	default y
+
+choice
+    prompt "Platform board"
+    depends on ARCH_NXP3200
+    default PLAT_NXP3200_M2K
+
+	config PLAT_NXP3200_BID
+		bool "Leapfrog Board with valid ID"
+		help
+			Support for the LeapFrog LF2000 with functioning Board ID
+
+	config PLAT_NXP3200_FAVELA
+		bool "LeapFrog LeapPad running the Rio UI"
+		help
+			Support for the LeapFrog LeapPad running the 'Rio' UI
+
+	config PLAT_NXP3200_L2K
+		bool "LeapFrog Explorer 'Lucy' LF2000 Board"
+		help
+   	 		Support for the LeapFrog Explorer 'Lucy' LF2000 form-factor Board
+
+	config PLAT_NXP3200_RIO
+		bool "LeapFrog 'Rio' LF2000 Board"
+		help
+   	 		Support for the LeapFrog LeapPad 'Rio' LF2000 form-factor Board
+
+	
+	config PLAT_NXP3200_M2K
+		bool "LeapFrog LeapPad 'Valencia' LF2000 Board"
+		help
+   	 		Support for the LeapFrog LeapPad 'Valencia' LF2000 form-factor Board
+   	 		
+   	config PLAT_NXP3200_VALENCIA_CIP
+		bool "Leapfrog LeapPad 'Valencia CIP' LF2000 Board"
+		help
+   	 		Support for the LeapFrog LeapPad 'Valencia CIP' LF2000 form-factor Board
+
+	config PLAT_NXP3200_VTK
+		bool "VTK: Validation Test Kit"
+		help
+   	 		Support for the validation test kit(vtk) board.
+endchoice
+
+choice
+	prompt "Prototype build mode"
+   	depends on ARCH_NXP3200
+	default PROTOTYPE_NXP3200_DBG
+
+	config  PROTOTYPE_NXP3200_REL
+		bool "Release"
+
+	config  PROTOTYPE_NXP3200_DBG
+		bool "Debug"
+endchoice
+
+config  NXP3200_SURGEON
+	prompt "Surgeon Build"
+    	depends on ARCH_NXP3200
+	bool
+	default n
+        ---help---
+        This option enables the surgeon recovery system build.
+        If you are unsure, say N.
+
+choice
+	prompt "memory max order"
+    	depends on ARCH_NXP3200
+ 	default MAX_ORDER_11
+
+	config MAX_ORDER_11
+		bool "4Mbyte"
+	config MAX_ORDER_12
+		bool "8Mbyte"
+endchoice
+
+config FORCE_MAX_ZONEORDER
+   	int
+   	default 11 if MAX_ORDER_11
+   	default 12 if MAX_ORDER_12
+
+choice
+	prompt "PLL1 speed"
+	default 550_PLL1_147P5_MHZ
+
+	config 550_PLL1_147P5_MHZ
+		bool "147.5 MHz"
+
+	config PLL1_266_MHZ
+		bool "266 MHz"
+
+	config PLL1_275_MHZ
+		bool "275 MHz"
+
+	config PLL1_333_MHZ
+		bool "333 MHz"
+
+	config PLL1_400_MHZ
+		bool "400 MHz"
+endchoice
+
+config SOC_LFP100
+	tristate "Support for the LFP100 audio/power/backlight chip"
+	depends on !PLAT_NXP3200_VTK
+	default y
+	---help---
+	This option enables platform support for the LFP100 combination
+	chip.  It is checked at runtime.  If you are unsure, say Y.

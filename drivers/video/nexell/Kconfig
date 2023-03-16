@@ -1,0 +1,13 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell Display SoC
+
+comment "Nexell Graphic"
+source "drivers/video/nexell/vmem/Kconfig"
+source "drivers/video/nexell/dpc/Kconfig"
+source "drivers/video/nexell/lcd/Kconfig"
+source "drivers/video/nexell/vip/Kconfig"
+source "drivers/video/nexell/decoder/Kconfig"
+source "drivers/video/nexell/csc/Kconfig"
+source "drivers/video/nexell/rotator/Kconfig"

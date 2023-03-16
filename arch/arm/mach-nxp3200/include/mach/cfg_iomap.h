@@ -1,0 +1,4 @@
+/* 			name	.virtual, 	.pfn, 		.length,	.type */
+PB_IO_MAP( 	REGS, 	0xF0000000,	0xC0000000,	0x00100000,	MT_DEVICE )		/* NOMAL IO, Reserved */
+PB_IO_MAP( 	NAND, 	0xF0100000,	0x2C000000,	0x00100000,	MT_DEVICE )		/* NAND  */
+PB_IO_MAP( 	CS4,	0xF0700000,	0x10000000,	0x00100000,	MT_DEVICE )		/* nSCS4: DM9000 */

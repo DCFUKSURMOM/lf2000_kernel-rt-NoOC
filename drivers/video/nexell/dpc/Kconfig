@@ -1,0 +1,8 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell display controller
+
+config GRP_NEXELL_DPC
+	bool "Display controller for Nexell"
+	depends on ARCH_NEXELL

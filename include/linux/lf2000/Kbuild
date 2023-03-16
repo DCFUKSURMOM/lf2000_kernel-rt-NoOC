@@ -1,0 +1,4 @@
+header-y += lf2000vip.h
+header-y += vr5_ioctl.h
+header-y += gpio.h
+header-y += gpio_ioctl.h

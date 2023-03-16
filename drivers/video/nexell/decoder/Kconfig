@@ -1,0 +1,19 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell Video Decoder
+################################################################################
+config VIP_DECODER_SR300PC10
+	tristate "SR300PC10 video decoder for VIP"
+	depends on GRP_NEXELL_VIP
+
+	config SR300PC10_I2C_PORT
+		int "Connect to i2c port num"
+		depends on VIP_DECODER_SR300PC10
+			default 0
+
+	config SR300PC10_VIP_PORT
+		int "Connect to vip port num"
+		depends on VIP_DECODER_SR300PC10
+			default 0
+

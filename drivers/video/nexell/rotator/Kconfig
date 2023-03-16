@@ -1,0 +1,11 @@
+#
+# Portions Copyright 2010 Nexell.
+#
+# Configuration options for the LF2000 ROTATOR (Rotator)
+
+config GRP_LF2000_ROTATOR
+	tristate "ROTATOR (Rotator) for LF2000"
+	depends on ARCH_NEXELL
+	help
+		Device driver access to LF2000 ROTATOR register group.
+		

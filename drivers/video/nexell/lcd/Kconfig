@@ -1,0 +1,10 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell LCD
+
+config NXP3200_LCD_VTK
+	bool "Backlight & Lcd for nxp3200 vtk board"
+	depends on FB_NEXELL
+	depends on PLAT_NXP3200
+

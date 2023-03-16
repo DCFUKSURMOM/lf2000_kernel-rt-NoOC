@@ -1,0 +1,56 @@
+# Copyright (c) Microsoft Corporation.  All rights reserved.
+# Use of this source code is subject to the terms of the Microsoft end-user
+# license agreement (EULA) under which you licensed this SOFTWARE PRODUCT.
+# If you did not accept the terms of the EULA, you are not authorized to use
+# this source code. For a copy of the EULA, please see the LICENSE.RTF on your
+# install media.
+# 
+# 
+# Module Name:
+# 
+#     sources.
+# 
+# Abstract:
+# 
+#     This file specifies the target component being built and the list of
+#     sources files needed to build that component.  Also specifies optional
+#     compiler switches and libraries that are unique for the component being
+#     built.
+# 
+
+TARGETNAME  = nx_module
+TARGETTYPE  = LIBRARY
+RELEASETYPE = PLATFORM
+SYNCHRONIZE_BLOCK = 1
+WINCEOEM = 1
+WINCECPU = 1
+NOMIPS16CODE = 1
+ADEFINES = -pd "_TGTCPU SETS \"$(_TGTCPU)\"" $(ADEFINES)
+LDEFINES = -subsystem:native /DEBUG /DEBUGTYPE:CV /FIXED:NO
+
+SOURCES= \
+	nx_adc.c			\
+	nx_alive.c			\
+	nx_audio.c			\
+	nx_clkpwr.c			\
+	nx_csc.c			\
+	nx_deinterlace.c	\
+	nx_dma.c			\
+	nx_dpc.c			\
+	nx_ecid.c			\
+	nx_gpio.c			\
+	nx_i2c.c			\
+	nx_intc.c			\
+	nx_mcud.c			\
+	nx_mcus.c			\
+	nx_mlc.c			\
+	nx_mpegtsif.c		\
+	nx_ohci.c			\
+	nx_pwm.c			\
+	nx_rotator.c		\
+	nx_rtc.c			\
+	nx_sdhc.c			\
+	nx_sspspi.c			\
+	nx_timer.c			\
+	nx_uart.c			\
+	nx_vip.c

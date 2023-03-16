@@ -1,0 +1,192 @@
+//------------------------------------------------------------------------------
+//
+//	Copyright (C) 2009 Nexell Co., All Rights Reserved
+//	Nexell Co. Proprietary & Confidential
+//
+//	NEXELL INFORMS THAT THIS CODE AND INFORMATION IS PROVIDED "AS IS" BASE
+//	AND	WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING
+//	BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+//	FOR A PARTICULAR PURPOSE.
+//
+//	Module		: nx_base
+//	File		: nx_chip_p3200.h
+//	Description	: support chip information
+//	Author		: Goofy
+//	Export		:
+//	History		:
+//		2011.02.15	Hans modify to nxp-3200
+//		2010.07.19	Hans modify to nxp-2120
+//		2008.04.17	Goofy first draft.
+//------------------------------------------------------------------------------
+#ifndef __NX_CHIP_P3200_H__
+#define __NX_CHIP_P3200_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+//------------------------------------------------------------------------------
+// To remove following waring on RVDS compiler
+//		Warning : #66-D: enumeration value is out of "int" range
+//------------------------------------------------------------------------------
+#ifdef __arm
+#pragma diag_remark 66		// disable #66 warining
+#endif
+
+//------------------------------------------------------------------------------
+// Module declaration.
+//------------------------------------------------------------------------------
+#ifndef NX_CHIP_MODULE_DECLARATION
+#define	NX_CHIP_MODULE_DECLARATION( _name_, _num_, _addr_, _offset_ )	\
+	enum {																\
+		NUMBER_OF_ ## _name_ ## _MODULE		= _num_,					\
+		PHY_BASEADDR_ ## _name_ ## _MODULE	= _addr_,					\
+		OFFSET_OF_ ## _name_ ## _MODULE		= _offset_					\
+	}
+#endif	// NX_CHIP_MODULE_DECLARATION
+
+//------------------------------------------------------------------------------
+//							(	Name , Number,	Addr	,	Offset	)
+//------------------------------------------------------------------------------
+NX_CHIP_MODULE_DECLARATION( DMA			, 8, 0xC0000000, 0x00000080 );
+NX_CHIP_MODULE_DECLARATION( INTC		, 1, 0xC0001000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( TIMER		, 5, 0xC0003000, 0x00000080 );
+NX_CHIP_MODULE_DECLARATION( VIP			, 1, 0xC0005000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( DPC			, 2, 0xC0006000, 0x00000400 );
+NX_CHIP_MODULE_DECLARATION( MLC			, 2, 0xC0008000, 0x00000400 );
+NX_CHIP_MODULE_DECLARATION( ROTATOR		, 1, 0xC0009000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( ADC			, 1, 0xC000A000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( MPEGTSIF	, 1, 0xC000E000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( SSPSPI		, 3, 0xC000F000, 0x00001000 );
+NX_CHIP_MODULE_DECLARATION( CSC			, 1, 0xC0012000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( SDHC		, 2, 0xC0013000, 0x00006000 );
+NX_CHIP_MODULE_DECLARATION( GPIO		, 4, 0xC0014000, 0x00000040 );
+NX_CHIP_MODULE_DECLARATION( PWM			, 1, 0xC0018000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( AUDIO		, 1, 0xC001B000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( I2C0		, 1, 0xC001C000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( I2C1		, 1, 0xC001D000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( CLKPWR		, 1, 0xC001E000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( IDCT		, 1, 0xC001F000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( OHCI		, 1, 0xC0020000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( AES			, 1, 0xC0022000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( OTG			, 1, 0xC0024000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( DEINTERLACE	, 1, 0xC0028000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( MCUD		, 1, 0xC0029000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( MCUS		, 1, 0xC002B000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART0		, 1, 0xC002C000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART1		, 1, 0xC002C080, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART2		, 1, 0xC002D000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART3		, 1, 0xC002D080, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART4		, 1, 0xC002E000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( UART5		, 1, 0xC002E080, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( ALIVE		, 1, 0xC0032000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( RTC			, 1, 0xC0032400, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( GRP3D		, 1, 0xC0034000, 0x00000000 );
+NX_CHIP_MODULE_DECLARATION( ECID		, 1, 0xC003F000, 0x00000000 );
+
+
+
+#ifdef __arm	// for RVDS
+#pragma diag_default 66		// return to default setting for #66 warning
+#endif
+
+
+//------------------------------------------------------------------------------
+// Interrupt Number of mudules for the interrupt controller.
+//------------------------------------------------------------------------------
+enum {
+	INTNUM_OF_DPC0_MODULE		= 0,
+	INTNUM_OF_DPC1_MODULE		= 1,
+	INTNUM_OF_VIP_MODULE		= 2,
+	INTNUM_OF_DMA_MODULE		= 3,
+	INTNUM_OF_TIMER0_MODULE		= 4,
+	INTNUM_OF_CLKPWR_MODULE		= 5,
+
+	INTNUM_OF_MPEGTSIF_MODULE	= 7,
+
+	INTNUM_OF_UART0_MODULE		= 10,
+	INTNUM_OF_TIMER1_MODULE		= 11,
+	INTNUM_OF_SSPSPI0_MODULE	= 12,
+	INTNUM_OF_GPIO_MODULE		= 13,
+	INTNUM_OF_SDHC0_MODULE		= 14,
+	INTNUM_OF_TIMER2_MODULE		= 15,
+
+	INTNUM_OF_TIMER3_MODULE		= 21,
+	INTNUM_OF_DEINTERLACE_MODULE= 22,
+
+	INTNUM_OF_AUDIO_MODULE		= 24,
+	INTNUM_OF_ADC_MODULE		= 25,
+	INTNUM_OF_MCUS_MODULE		= 26,
+	INTNUM_OF_GRP3D_MODULE		= 27,
+
+	INTNUM_OF_ROTATOR_MODULE	= 29,
+
+	INTNUM_OF_RTC_MODULE		= 31,
+	INTNUM_OF_I2C0_MODULE		= 32,
+	INTNUM_OF_I2C1_MODULE		= 33,
+	INTNUM_OF_UART1_MODULE		= 34,
+	INTNUM_OF_UART2_MODULE		= 35,
+	INTNUM_OF_UART3_MODULE		= 36,
+	INTNUM_OF_UART4_MODULE		= 37,
+	INTNUM_OF_UART5_MODULE		= 38,
+	INTNUM_OF_SSPSPI1_MODULE	= 39,
+	INTNUM_OF_SSPSPI2_MODULE	= 40,
+	INTNUM_OF_CSC_MODULE		= 41,
+	INTNUM_OF_SDHC1_MODULE		= 42,
+	INTNUM_OF_TIMER4_MODULE		= 43,
+	INTNUM_OF_IDCT_MODULE		= 44,
+
+	INTNUM_OF_ALIVE_MODULE		= 50,
+
+	INTNUM_OF_OHCI_MODULE		= 53,
+
+	INTNUM_OF_OTG_MODULE		= 56
+};
+
+//------------------------------------------------------------------------------
+// DMA peripheral index of modules for the DMA controller.
+//------------------------------------------------------------------------------
+enum {
+	DMAINDEX_OF_UART0_MODULE_TX			= 0,
+	DMAINDEX_OF_UART0_MODULE_RX			= 1,
+	DMAINDEX_OF_UART1_MODULE_TX			= 2,
+	DMAINDEX_OF_UART1_MODULE_RX			= 3,
+	DMAINDEX_OF_UART2_MODULE_TX			= 4,
+	DMAINDEX_OF_UART2_MODULE_RX			= 5,
+	DMAINDEX_OF_UART3_MODULE_TX			= 6,
+	DMAINDEX_OF_UART3_MODULE_RX			= 7,
+	DMAINDEX_OF_UART4_MODULE_TX			= 8,
+	DMAINDEX_OF_UART4_MODULE_RX			= 9,
+	DMAINDEX_OF_UART5_MODULE_TX			= 10,
+	DMAINDEX_OF_UART5_MODULE_RX			= 11,
+
+
+	DMAINDEX_OF_SDHC0_MODULE			= 16,
+	DMAINDEX_OF_MPEGTSIF_MODULE			= 17,
+	DMAINDEX_OF_SSPSPI0_MODULE_TX		= 18,
+	DMAINDEX_OF_SSPSPI0_MODULE_RX		= 19,
+	DMAINDEX_OF_SSPSPI1_MODULE_TX		= 20,
+	DMAINDEX_OF_SSPSPI1_MODULE_RX		= 21,
+	DMAINDEX_OF_SSPSPI2_MODULE_TX		= 22,
+	DMAINDEX_OF_SSPSPI2_MODULE_RX		= 23,
+	DMAINDEX_OF_AUDIO_MODULE_PCMOUT		= 24,
+	DMAINDEX_OF_AUDIO_MODULE_SPDIFOUT	= 25,
+	DMAINDEX_OF_AUDIO_MODULE_PCMIN		= 26,
+	DMAINDEX_OF_AUDIO_MODULE_MICIN		= 27,
+	DMAINDEX_OF_AUDIO_MODULE_ADC1IN		= 28,
+	DMAINDEX_OF_AUDIO_MODULE_ADC2IN		= 29,
+	DMAINDEX_OF_SDHC1_MODULE			= 30,
+
+	DMAINDEX_OF_I2C0_MODULE				= 33,
+	DMAINDEX_OF_I2C1_MODULE				= 34,
+
+	DMAINDEX_OF_AES_MODULE_RX			= 43,
+	DMAINDEX_OF_AES_MODULE_TX			= 44
+};
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // __NX_CHIP_P3200_H__

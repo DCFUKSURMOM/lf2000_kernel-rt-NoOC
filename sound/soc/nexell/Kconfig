@@ -1,0 +1,32 @@
+#
+# Copyright 2010 Nexell.
+#
+# Configuration options for the Nexell Sound
+
+config SND_NEXELL_SOC
+	tristate "Nexell SoC Audio (NX series)"
+	depends on ARCH_NEXELL
+	help
+	  Say Y or M if you want to add support for codecs attached to
+	  the AC97 and I2S interface.
+
+config SND_NEXELL_SOC_I2S
+	tristate
+
+config SND_NEXELL_SOC_AC97
+	tristate
+
+config SND_CODEC_CS42L52
+	tristate "cs42l52 I2S audio codec."
+	depends on SND_NEXELL_SOC
+	select SND_NEXELL_SOC_I2S
+	select SND_SOC_CS42L52
+
+config SND_CODEC_LFP100
+	tristate "LFP100 I2S audio codec"
+	depends on SND_NEXELL_SOC
+	select SND_NEXELL_SOC_I2S
+	select SND_SOC_LFP100
+	help
+	  Say Y or M to enable SoC support for LFP100 audio codec. 
+	  If unsure, say M.
