@@ -14,7 +14,7 @@ Board files for my SD cart are here https://github.com/DCFUKSURMOM/LeapSD
 
 If you are ballsy like me you can sacrifice the cartridge slot and hardwire an SD to Micro-SD adapter in like I did for the initial testing, however I plan on attempting to do a combo Wifi/SD cart in the future so I wouldnt recommend it
 
-This kernel can only be built with the RetroLeap buildroot (under the kernel menu point it to this repository)
+This kernel can be built with the RetroLeap buildroot (under the kernel menu point it to this repository)
 
 If you want to use my custom buildroot rootfs (which adds stuff like nano, htop, mc, nefoetch, and util-linux) build the kernel first "make linux" 
 
